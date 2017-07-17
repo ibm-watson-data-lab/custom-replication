@@ -1,0 +1,27 @@
+{
+  "name": "custom-replication",
+  "version": "1.0.0",
+  "description": "Custom Cloudant 'replication' demo",
+  "main": "action.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibm-watson-data-lab/custom-replication.git"
+  },
+  "keywords": [
+    "Cloudant",
+    "OpenWhisk",
+    "Replication"
+  ],
+  "author": "Glynn Bird <glynn.bird@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ibm-watson-data-lab/custom-replication/issues"
+  },
+  "homepage": "https://github.com/ibm-watson-data-lab/custom-replication#readme",
+  "dependencies": {
+    "cloudant": "^1.8.0"
+  }
+}
