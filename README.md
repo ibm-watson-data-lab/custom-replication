@@ -41,3 +41,36 @@ that represent the progress of a bus along its journey.
 The OpenWhisk action takes the document, removes some unnecessary detail and writes the pruned data to two locations: a database for the start station and a database for the arrival station, retaining the revision token.
 
 This allows station displays to see only the data that pertains to their station while maintaining a master database containing all the data.
+
+## Deploying
+
+Sign up for a Cloudant service and in the dashboard create three databases:
+
+- bus
+- busstation_newcastleupontyne
+- busstation_victorialondon
+
+Create some environment variables containing your Cloudant credentials:
+
+```sh
+$ export CLOUDANT_HOST="YOURACCOUNT.cloudant.com"
+$ export CLOUDANT_USERNAME="YOURACCOUNT"
+$ export CLOUDANT_PASSWORD="YOURPASSWORD"
+$ export CLOUDANT_DB="bus"
+```
+
+Install the [`wsk` command-line tool](https://console.bluemix.net/openwhisk/learn/cli) and configure it against your IBM Bluemix account.
+
+Run `deploy.sh`.
+
+Now every time you create or modify a document in the `bus` database, the other two databases will receive cut-down copies of the original document.
+
+## Caveats
+
+This configuration may be useful to you if you need:
+
+- a central every growing database of data
+- a limited number of satellite databases (in this case one-per-station) that contain a subset of this data
+- all data change happens centrally and is broadcast outwards to remote replicas
+
+Feel free to try this approach yourself if you have an application like this. 
